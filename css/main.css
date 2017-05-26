@@ -472,7 +472,7 @@ input:checked + .slider:before {
 	height: 0px;
 	padding-top: 60px;
 	margin: 0;
-	margin-bottom: 0px;
+	margin-bottom: 20px;
 }
 
 #infoBox div.infoTip {
