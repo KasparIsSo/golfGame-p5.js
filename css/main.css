@@ -1,0 +1,577 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Independent Style */
+
+canvas {
+	display: block;
+	/*max-height: 100%;*/
+}
+
+#golfGame {
+	position: relative;
+	display: inline-block;
+	overflow: auto;
+	box-shadow: 0px 3px 10px hsla(0, 0%, 50%, .5);
+}
+
+/* Info */
+
+#golfGame #info {
+	position: absolute;
+	left: 30px;
+	bottom: 30px;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	background-color: hsl(344, 90%, 55%);
+	box-shadow: 0px 3px 5px hsla(0, 0%, 50%, .7);
+	color: hsl(0, 0%, 100%);
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	font-size: 1.4em;
+	z-index: 2;
+}
+
+#golfGame #info p {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* UI */
+#ggUI {
+	width: 150px;
+	height: 200px;
+	position: absolute;
+	right: 30px;
+	bottom: 30px;
+	background-color: hsl(0, 0%, 100%);
+	font-family: 'Roboto', sans-serif;
+	color: hsl(0, 0%, 40%);
+	/*border-radius: 5px;*/
+	box-shadow: 0px 3px 5px hsla(0, 0%, 50%, .7);;
+}
+
+#ggUI > div:first-child {
+	position: relative;
+	font-family: 'Dancing Script', 'Great Vibes', cursive;
+	font-weight: 400;
+	font-size: 1.5em;
+	width: 120%;
+	margin-left: -10%;
+	height: 50px;
+	/*border-radius: 5px 5px 0px 0px;*/
+	color: hsl(0, 0%, 100%);
+	background-color: hsl(344, 90%, 55%);
+	box-shadow: 0px 3px 5px hsla(0, 0%, 50%, .7);
+}
+
+#ggUI > div:first-child div.lFold{
+	position: absolute;
+	border-left: 7.5px solid hsla(0, 0%, 0%, 0);
+	border-bottom: 7.5px solid hsla(0, 0%, 0%, 0);
+	border-right: 7.5px solid hsl(344, 90%, 40%);
+	border-top: 7.5px solid hsl(344, 90%, 40%);
+	left: 0;
+	top: 50px;
+}
+
+#ggUI > div:first-child div.rFold{
+	position: absolute;
+	border-right: 7.5px solid hsla(0, 0%, 0%, 0);
+	border-bottom: 7.5px solid hsla(0, 0%, 0%, 0);
+	border-left: 7.5px solid hsl(344, 90%, 40%);
+	border-top: 7.5px solid hsl(344, 90%, 40%);
+	right: 0;
+	top: 50px;
+}
+
+.aCenter {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+#ggUI > div:nth-child(2) {
+	font-weight: 100;
+	width: 100%;
+	height: 90px;
+	line-height: 1.5em;
+}
+
+#ggUI > div:nth-child(3) {
+	font-weight: 100;
+	font-size: .8em;
+	position: relative;
+	height: 60px;
+	text-align: left;
+	/*padding: 0 10px;*/
+	/*border-radius: 0px 0px 5px 5px;*/
+}
+
+#golfGame div.button button{
+	border: none;
+	background-color: hsl(0, 0%, 100%);
+	color: hsl(0, 0%, 20%);
+	/*border-radius: 0px 0px 5px 5px;*/
+}
+
+#ggUI > div:nth-child(3) > p {
+	position: absolute;
+	top: 50%;
+	left: 12px;
+	transform: translateY(-50%);
+	display: inline-block;
+	/*border-radius: 0px 0px 5px 5px;*/
+}
+
+/*slider*/
+.switch {
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-block;
+	width: 50px;
+	height: 26px;
+}
+
+.switch input {
+	display: none;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: hsl(0, 0%, 80%);
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 26px;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 0px;
+	bottom: 0px;
+	background-color: hsl(344, 90%, 55%);
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 50%;
+}
+
+input:checked + .slider {
+	background-color: hsl(344, 80%, 85%);
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+	-webkit-transform: translateX(24px);
+	-ms-transform: translateX(24px);
+	transform: translateX(24px);
+}
+
+/* Info PopUp */
+
+#infoBox {
+	display: none;
+	width: 520px;
+	height: 240px;
+	position: absolute;
+	left: 30px;
+	top: 200px;
+	padding: 30px 10px;
+	background-color: hsl(0, 0%, 100%);
+	font-family: 'Roboto', sans-serif;
+	color: hsl(0, 0%, 40%);
+	box-shadow: 0px 3px 5px hsla(0, 0%, 50%, .7);
+	z-index: 1;
+}
+
+#infoBox div {
+	width: 86px;
+	margin: 70px 10px;
+	float: left;
+	text-align: center;
+}
+
+#infoBox div p {
+	font-size: .8em;
+	line-height: 1.2em;
+}
+
+#infoBox div div{
+	width: 90px;
+	height: 0px;
+	padding-top: 70px;
+	margin: 0;
+	margin-bottom: 20px;
+	background-position: center;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+}
+
+#infoBox div.infoTip {
+	border-left: 2px solid hsl( 0, 0%, 40% );
+	margin-top: 35px;
+	margin-left: 2px;
+	padding: 10px 10px 10px 16px;
+	width: 162px;
+	height: 156px;
+	text-align: left;
+}
+
+#infoBox div.infoTip h3 {
+	font-weight: 700;
+	line-height: 1.8em;
+	font-size: 2em;
+}
+
+/* End Screen */
+
+#endScreenBG {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+	background-color: hsla(0, 0%, 100%, .5);
+}
+
+#endScreen {
+	position: relative;
+	width: 480px;
+	height: 640px;
+	margin: 80px 60px;
+	font-family: 'Roboto', sans-serif;
+	background-color: hsl(0, 0%, 100%);
+	box-shadow: 0px 3px 5px hsla(0, 0%, 50%, .7);;
+}
+
+#endScreen div.resultSplash {
+	background-color: hsl(344, 90%, 55%);
+	color: hsl(0, 0%, 100%);
+	width: 420px;
+	height: 300px;
+	padding: 30px;
+	text-align: center;
+}
+
+#endScreen div.resultSplash p{
+	font-weight: 100;
+	font-size: 1.5em;
+	margin: 50px 0;
+}
+
+#endScreen div.resultSplash h2 {
+	text-transform: uppercase;
+	font-size: 3em;
+	font-weight: 700;
+}
+
+#endScreen div.resultSplash p.thankYou {
+	font-family: 'Dancing Script', 'Great Vibes', cursive;
+}
+
+#endScreen div.content {
+	color: hsl(0, 0%, 40%);
+	font-family: 'Roboto', sans-serif;
+	width: 420px;
+	height: 220px;
+	padding: 30px;
+	text-align: left;
+}
+
+#endScreen div.content h3 {
+	font-size: 1.5em;
+	line-height: 1.5em;
+	margin-bottom: 20px;
+}
+
+#endScreen div.content p {
+	font-weight: 100;
+	line-height: 1.5em;
+	margin-bottom: 20px;
+	cursor: default;
+}
+
+#endScreen div.content div.endButtons {
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+}
+
+#endScreen div.content a {
+	line-height: 1.5em;
+	margin-right: 20px;
+	cursor: pointer;
+}
+/*
+#endScreen div.content a:hover {
+	cursor: pointer;
+}
+*/
+
+@media (max-width: 420px) {
+
+#ggUI {
+	width: 100px;
+	height: 135px;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+
+#ggUI > div:first-child {
+	font-weight: 400;
+	font-size: 1em;
+	width: 100%;
+	margin-left: 0%;
+	height: 35px;
+}
+
+#ggUI > div:first-child > p {
+	display: inline-block;
+	width: 100%;
+}
+
+#ggUI > div:first-child div.lFold{
+	display: none;
+}
+
+#ggUI > div:first-child div.rFold{
+	display: none;
+}
+
+#ggUI > div:nth-child(2) {
+	position: relative;
+	font-weight: 100;
+	width: 100%;
+	height: 50px;
+	font-size: .8em;
+	line-height: 1.2em;
+}
+
+#ggUI > div:nth-child(2) > div {
+	display: block;
+	width: 100%;
+}
+
+#ggUI > div:nth-child(3) {
+	font-weight: 100;
+	font-size: .8em;
+	position: relative;
+	height: 50px;
+	text-align: center;
+}
+
+#ggUI > div:nth-child(3) > p {
+	position: relative;
+	left: 0;
+	/*text-align: center;*/
+	top: 15%;
+}
+
+/*slider*/
+.switch {
+	position: relative;
+	left: 50%;
+	top: 15%;
+	transform: translateX(-100%);
+	display: inline-block;
+	width: 50px;
+	height: 26px;
+}
+
+/* Info PopUp */
+
+#infoBox {
+	width: 300px;
+	height: 240px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0 auto;
+	padding: 30px 10px;
+	overflow: hidden;
+}
+
+#infoBox div {
+	width: 80px;
+	margin: 10px 10px;
+	float: left;
+	text-align: center;
+}
+
+#infoBox div p {
+	font-size: .8em;
+	line-height: 1.2em;
+}
+
+#infoBox div div{
+	width: 80px;
+	height: 0px;
+	padding-top: 60px;
+	margin: 0;
+	margin-bottom: 0px;
+}
+
+#infoBox div.infoTip {
+	border-left: 0px solid hsl( 0, 0%, 40% );
+	border-top: 2px solid hsl( 0, 0%, 40% );
+	margin-top: 15px;
+	margin-left: 0px;
+	padding: 10px 10px;
+	width: 280px;
+	height: 156px;
+	text-align: left;
+	letter-spacing: .05em;
+}
+
+#infoBox div.infoTip h3 {
+	font-weight: 700;
+	line-height: 1.8em;
+	font-size: 2em;
+}
+
+/* End Screen */
+
+#endScreenBG {
+	/*display: inline;*/
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#endScreen {
+	position: relative;
+	width: 80%;
+	height: 85%;
+	margin: 11% auto;
+}
+
+#endScreen div.resultSplash {
+	width: 80%;
+	height: 40%;
+	padding: 10%;
+}
+
+#endScreen div.resultSplash p{
+	font-size: 1.2em;
+	margin: 11% 0;
+}
+
+#endScreen div.resultSplash h2 {
+	font-size: 2em;
+}
+
+#endScreen div.content {
+	color: hsl(0, 0%, 40%);
+	font-family: 'Roboto', sans-serif;
+	width: 80%;
+	height: 35%;
+	padding: 10%;
+}
+
+#endScreen div.content h3 {
+	font-size: 1.2em;
+	line-height: 1.2em;
+	margin-bottom: 5%;
+}
+
+#endScreen div.content p {
+	font-weight: 100;
+	font-size: .8em;
+	line-height: 1.2em;
+	margin-bottom: 5%;
+}
+
+#endScreen div.content div.endButtons {
+	position: absolute;
+	bottom: 5%;
+	left: 10%;
+}
+
+#endScreen div.content a {
+	font-size: .8em;
+	margin-right: 20px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

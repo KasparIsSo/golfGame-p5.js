@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Golf Game</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Great+Vibes|Roboto:100,400,700" rel="stylesheet">
+
+		<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+		<script src="https://d3js.org/d3.v4.min.js"></script> -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="libraries/p5.min.js"></script>
+		<script src="libraries/p5.dom.min.js"></script>
+	</head>
+	<body>
+
+		<div id = "golfGame">
+			<div id = "endScreenBG">
+				<div id = "endScreen">
+					<div class = "resultSplash">
+						<p>You scored a</p>
+						<h2 id = "fStrokeC">hole in one</h2>
+						<p class = "thankYou">Thanks for Playing!</p>
+					</div>
+					<div class = "content">
+						<h3>Fun Fact</h3>
+						<p>Tigers don't live in the woods, but rather in the jungle.</p>
+						<div class = "endButtons">
+							<a style = "color: hsl(344, 90%, 55%);">Continue Reading</a>
+							<a onclick = "restartGG();">Play Again</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id = "info" onclick="showInfo()">
+				<p>?</p>
+			</div>
+
+			<div id = "infoBox">
+				<div>
+					<div style = "background-image: url(../images/tip1.svg"></div>
+					<p>Line it Up</p>
+				</div>
+				<div>
+					<div style = "background-image: url(../images/tip2.svg"></div>
+					<p>Adjust Power</p>
+				</div>
+				<div>
+					<div style = "background-image: url(../images/tip3.svg"></div>
+					<p>Let it Go!</p>
+				</div>
+				<div class = "infoTip">
+					<h3>TIP!</h3>
+					<p>
+						Putting is hard! Sink the ball in the hole by accounting for grain, resistance and speed. Check the grain of the grass by toggling "Grass Flow."
+					</p>
+				</div>
+			</div>
+
+			<div id = "ggUI">
+				<div>
+					<p class = "aCenter">
+						Le Putter
+					</p>
+					<div class = "lFold"></div>
+					<div class = "rFold"></div>
+				</div>
+
+				<div>
+					<div class = "aCenter">
+						<p style = "font-weight: 400;">Par: 3</p>
+						<p id = "strokeCount">
+							Stroke: 0
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<p>Grass Flow</p>
+					<!-- <label class = "switch">
+						<input type = "checkbox" checked>
+						<div class = "slider">
+					</label> -->
+					<label class = "switch">
+						<input id = "showSwitch" type = "checkbox">
+						<div class = "slider">
+					</label>
+					<!-- <button onclick="showFlow()">
+						Show Grass Flow
+					</button> -->
+				</div>
+			</div>
+		</div>
+
+		<script src="js/sketch.js"></script>
+
+		<script type="text/javascript">
+
+			$('#golfGame').bind('touchmove', function(e) {
+				e.preventDefault();
+			});
+
+			function showInfo() {
+				$('#infoBox').fadeToggle( 400, "linear" );
+
+				if ($('#info > p').html() == "?" ) {
+					$('#info > p').html('X').fadeIn( "slow" );
+				} else {
+					$('#info > p').html('?').fadeIn( "slow" );
+				}
+			}
+
+		</script>
+
+	</body>
+</html>
