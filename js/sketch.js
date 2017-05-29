@@ -47,9 +47,6 @@ function setup() {
 	// button.mousePressed(showFlow);
 
 	// c.appendChild(button);
-
-
-
 	c.mouseReleased(mClicked);
 	c.touchEnded(mClicked);
 
@@ -61,23 +58,34 @@ function draw() {
 	// background(115, 50, 88);
 	background(115, 40, 88);
 
+	stroke(255);
+	strokeWeight(.5);
+
 	if(sFlow){
-		for ( y = 0; y < noise2D.length; y++ ) {
-			for( x = 0; x < noise2D[y].length; x++ ) {
-				stroke(255);
-				strokeWeight(.5);
-				push();
-					translate( x * tile + .5 * tile , y * tile + .5 * tile );
-					// noFill();
-					// rect(-.5 * tile, -.5 * tile, tile, tile);
-					rotate(noise2D[y][x].heading());
-					arrow( 0, 0, tile, 0);
-					// line( 0, 0, tile, 0 );
-				pop();
-				// console.log(mag(noise2D[y][x].x, noise2D[y][x].y));
-				// everything has equal force
-			}
+		for ( i = 0; i < noise2D.length; i++ ) {
+			var tempX = i % col;
+			var tempY = Math.floor(i / col);
+			push();
+				translate( tempX * tile + .5 * tile , tempY * tile + .5 * tile );
+				rotate(noise2D[i].heading());
+				arrow( 0, 0, tile, 0);
+			pop();
 		}
+
+		// for ( y = 0; y < noise2D.length; y++ ) {
+		// 	for( x = 0; x < noise2D[y].length; x++ ) {
+		// 		push();
+		// 			translate( x * tile + .5 * tile , y * tile + .5 * tile );
+		// 			// noFill();
+		// 			// rect(-.5 * tile, -.5 * tile, tile, tile);
+		// 			rotate(noise2D[y][x].heading());
+		// 			arrow( 0, 0, tile, 0);
+		// 			// line( 0, 0, tile, 0 );
+		// 		pop();
+		// 		// console.log(mag(noise2D[y][x].x, noise2D[y][x].y));
+		// 		// everything has equal force
+		// 	}
+		// }
 	}
 
 	noStroke();
@@ -186,8 +194,8 @@ var ball = function() {
 			this.velocity.y = Math.abs(this.velocity.y);
 		}
 
-		console.log(this.position.x);
-		console.log("y" + this.position.y);
+		// console.log(this.position.x);
+		// console.log("y" + this.position.y);
 		this.counter += .1;
 		this.velocity.x += .1 * noise2D[tileY][tileX].x / this.counter;
 		this.velocity.y += .1 * noise2D[tileY][tileX].y / this.counter;
@@ -235,13 +243,14 @@ function loadNoise() {
 	// inc = Math.random(20);
 	var lrRandom = Math.round(Math.random()) + Math.random()/20;
 	for ( y = 0; y < row; y++ ) {
-		var temp = [];
+		// var temp = [];
 		for ( x = 0; x < col; x++ ) {
 			var r = noise( x * inc, y * inc ) * PI/4 + lrRandom * PI;
 			var v = p5.Vector.fromAngle(r);
-			temp.push(v);
+			// temp.push(v);
+			noise2D.push(v);
 		}
-		noise2D.push(temp);
+		// noise2D.push(temp);
 	}
 	strokeCount = 0;
 }
