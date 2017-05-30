@@ -9,17 +9,18 @@ if (wCheck <= 420) {
 	var h = 800;
 }
 
-var tile = 20;
+var tile  = 20;
+var tile2 = tile/4;
 
-var col = w/tile + 1;
-var row = h/tile + 1;
+var col   = Math.ceil(w/tile) + 1;
+var row   = Math.ceil(h/tile) + 1;
 
-var inc = .1;
+var inc   = .1;
 
 var b, holeP;
 
-var alw = 10; //allowance
-var end = false; //endscreen
+var alw   = 10; //allowance
+var end   = false; //endscreen
 
 var noise2D = [];
 
@@ -27,6 +28,9 @@ var button;
 var sFlow = false;
 
 var strokeCount = 0;
+
+var wEdge = w-tile2;
+var hEdge = h-tile2;
 
 function setup() {
 	// c = createCanvas($(window).innerWidth(), $(window).innerHeight());
@@ -59,14 +63,18 @@ function draw() {
 	background(115, 40, 88);
 
 	stroke(255);
-	strokeWeight(.5);
+	strokeWeight(1);
+	noFill();
 
 	if(sFlow){
 		for ( i = 0; i < noise2D.length; i++ ) {
 			var tempX = i % col;
 			var tempY = Math.floor(i / col);
+			// console.log("x: " + tempX + " , y: " + tempY);
 			push();
 				translate( tempX * tile + .5 * tile , tempY * tile + .5 * tile );
+				// translate( tempX * tile , tempY * tile );
+				// rect(0, 0, tile, tile);
 				rotate(noise2D[i].heading());
 				arrow( 0, 0, tile, 0);
 			pop();
@@ -138,8 +146,11 @@ var ball = function() {
 		this.position.x += this.velocity.x;
 		this.position.y += this.velocity.y;
 		// apply force
-		var tileX = Math.min(Math.abs(Math.floor(this.position.x / tile)), col-1);
-		var tileY = Math.min(Math.abs(Math.floor(this.position.y / tile)), row-1);
+		// var tileX = Math.min(Math.abs(Math.floor(this.position.x / tile)), col-1);
+		// var tileY = Math.min(Math.abs(Math.floor(this.position.y / tile)), row-1);
+		var tileX = Math.abs(Math.floor(this.position.x / tile));
+		var tileY = Math.abs(Math.floor(this.position.y / tile));
+		var tilePos = tileY * col + tileX;
 
 		if (this.velocity.x < 0 ){
 			this.velocity.x *= .99;
@@ -154,7 +165,7 @@ var ball = function() {
 			this.velocity.y *= .99;
 		}
 
-		if (mag(this.velocity.x, this.velocity.y) < 1.8 && this.counter > 4){
+		if (mag(this.velocity.x, this.velocity.y) < 0.4 && this.counter > 3){
 			this.velocity.x = 0;
 			this.velocity.y = 0;
 
@@ -181,24 +192,26 @@ var ball = function() {
 		// }
 
 		//bounce those balls
-		if ( this.position.x >= w ) {
+		if ( this.position.x >= wEdge ) {
 			this.velocity.x = -1 * Math.abs(this.velocity.x);
 		}
-		if ( this.position.x <= 0 ) {
+		if ( this.position.x <= tile2 ) {
 			this.velocity.x = Math.abs(this.velocity.x);
 		}
-		if ( this.position.y >= h ) {
+		if ( this.position.y >= hEdge ) {
 			this.velocity.y = -1 * Math.abs(this.velocity.y);
 		}
-		if ( this.position.y <= 0 ) {
+		if ( this.position.y <= tile2 ) {
 			this.velocity.y = Math.abs(this.velocity.y);
 		}
 
 		// console.log(this.position.x);
 		// console.log("y" + this.position.y);
-		this.counter += .1;
-		this.velocity.x += .1 * noise2D[tileY][tileX].x / this.counter;
-		this.velocity.y += .1 * noise2D[tileY][tileX].y / this.counter;
+		this.counter += .15;
+		// this.velocity.x += .1 * noise2D[tileY][tileX].x / this.counter;
+		// this.velocity.y += .1 * noise2D[tileY][tileX].y / this.counter;
+		this.velocity.x += .1 * noise2D[tilePos].x / this.counter;
+		this.velocity.y += .1 * noise2D[tilePos].y / this.counter;
 
 		
 	}
@@ -256,8 +269,8 @@ function loadNoise() {
 }
 
 function arrow( x1, y1, x2, y2 ) {
-	line(x1, y1, x1 - 10, y1 + 5);
-	line(x1, y1, x1 - 10, y1 - 5);
+	line(x1, y1, x1 - 8, y1 + 4);
+	line(x1, y1, x1 - 8, y1 - 4);
 }
 
 $('#showSwitch').change(function() {

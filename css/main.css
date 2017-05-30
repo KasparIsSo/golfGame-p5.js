@@ -489,8 +489,8 @@ input:checked + .slider:before {
 
 #infoBox div.infoTip h3 {
 	font-weight: 700;
-	line-height: 1.8em;
-	font-size: 2em;
+	line-height: 1.5em;
+	font-size: 1.8em;
 }
 
 /* End Screen */
